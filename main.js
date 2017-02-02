@@ -5,7 +5,7 @@ var tiles = [$("#t1"), $("#t2"), $("#t3"), $("#t4")],
  towers = $(".towers");
  gameover = false;//game isn't over yet
  active = false;//initally there is not a click
- reset = $("#resetButton")//trying to add reset function
+ reset = $("#resetButton")//trying to add reset function EW: You could delete this line and simply target the #resetButton id in the reset function at the bottom see example below
 towers.click(function(){//game function
 
     if (active==true) {//click in tower is active
@@ -24,7 +24,7 @@ towers.click(function(){//game function
      active = true;//if there are no values to compare, add active class to selected tile
    }
 setTimeout(checkWin, 2000);//alert once game is won
-function checkWin(){
+function checkWin(){ //EW: this is a cool and simple way to check if the game is won simply by countin the number of child elements in tower3. makes sense
   if(tower3.children().length === 4){//game is won once the proper number of children elements are placed into tower 3
     $("#announce-game-won").html("Congratulaions! You've caught them all!");
     gameover = true;
@@ -41,6 +41,11 @@ function checkWin(){
     // gameover = false;
   })
 })
+
+// EW: $("#resetButton").on("click", function(){
+//   location.reload();
+// })
+
 
 //}
 //create a score keeper/move tracker
